@@ -21,7 +21,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           image_name: streamlet-backend-dev
-          registry: docker.pkg.github.com
+          registry: ghcr.io
           image_tag: latest
           context: ./
           dockerfile: ./.docker/backend.Dockerfile
@@ -39,7 +39,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           image_name: streamlet-frontend-dev
-          registry: docker.pkg.github.com
+          registry: ghcr.io
           image_tag: latest
           context: ./
           dockerfile: ./.docker/frontend.Dockerfile
