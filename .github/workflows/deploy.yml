@@ -72,10 +72,10 @@ jobs:
           password: ${{ secrets.DEPLOYMENT_SSH_PASSWORD }}
           envs: GITHUB_USERNAME,GITHUB_TOKEN
           script: |
+            cd app/.docker/
             export GITHUB_USERNAME=$GITHUB_USERNAME
             export GITHUB_TOKEN=$GITHUB_TOKEN
             echo "$GITHUB_TOKEN" | sudo docker login ghcr.io -u $GITHUB_USERNAME --password-stdin
-            cd app/.docker/
             sudo docker compose -f docker-compose.yml pull
             sudo docker compose -f docker-compose.yml stop
             sudo docker compose -f docker-compose.yml up -d --build
