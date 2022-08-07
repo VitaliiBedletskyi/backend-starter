@@ -18,58 +18,6 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-  backend:
-    image: ghcr.io/vitaliibedletskyi/backend:latest
-    container_name: backend
-    depends_on:
-      - api-db
-    ports:
-      - '5001:5001'
-    env_file:
-      - ../.env/api.env
-    networks:
-      - backend_network
-      - frontend_network
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "5"
-  frontend:
-    image: ghcr.io/vitaliibedletskyi/frontend:latest
-    container_name: frontend
-    depends_on:
-      - backend
-    ports:
-      - '80:80'
-      - '443:443'
-    env_file:
-      - ../.env/client.env
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "5"
-    volumes:
-#      - ../etc-letsencrypt:/etc/letsencrypt
-#      - /var/www/dev.streamlet.tk/html:/var/www/dev.streamlet.tk/html
-
-      - /etc/letsencrypt/live/dev.streamlet.tk/fullchain.pem:/etc/letsencrypt/live/dev.streamlet.tk/fullchain.pem
-      - /etc/letsencrypt/live/dev.streamlet.tk/privkey.pem:/etc/letsencrypt/live/dev.streamlet.tk/privkey.pem
-      - /etc/letsencrypt/options-ssl-nginx.conf:/etc/letsencrypt/options-ssl-nginx.conf
-      - /etc/letsencrypt/ssl-dhparams.pem:/etc/letsencrypt/ssl-dhparams.pem
-    networks:
-      - backend_network
-      - frontend_network
-#  certbot:
-#    image: certbot/certbot
-#    depends_on:
-#      - frontend
-#    container_name: certbot
-#    volumes:
-#      - ../etc-letsencrypt:/etc/letsencrypt
-#      - /var/www/dev.streamlet.tk/html:/var/www/dev.streamlet.tk/html
-#    command: certonly --webroot -webroot-path= /var/www/dev.streamlet.tk/html --email streamletbsa@gmail.com --agree-tos --no-eff-email -d dev.streamlet.tk
 
 volumes:
   pgdata_api:

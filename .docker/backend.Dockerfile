@@ -14,6 +14,8 @@ COPY ./backend ./backend/
 RUN npm ci -w shared -w backend
 
 RUN npm run build:backend
+RUN rm -rf ./backend/src
+RUN rm -rf ./shared/src
 
 EXPOSE 5001
 CMD npm start -w backend
