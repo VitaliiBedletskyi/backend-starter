@@ -1,10 +1,9 @@
-name: Deploy
+name: Deploy staging
 
 on:
   push:
     branches:
       - development
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -20,7 +19,7 @@ jobs:
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          image_name: backend
+          image_name: streamlet-backend:dev
           registry: ghcr.io
           image_tag: latest
           context: ./
@@ -38,7 +37,7 @@ jobs:
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          image_name: frontend
+          image_name: streamlet-frontend:dev
           registry: ghcr.io
           image_tag: latest
           context: ./
