@@ -20,7 +20,7 @@ jobs:
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          image_name: streamlet-backend-dev-test
+          image_name: backend
           registry: ghcr.io
           image_tag: latest
           context: ./
@@ -38,7 +38,7 @@ jobs:
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          image_name: streamlet-frontend-dev-test
+          image_name: frontend
           registry: ghcr.io
           image_tag: latest
           context: ./

@@ -19,7 +19,7 @@ services:
         max-size: "10m"
         max-file: "3"
   backend:
-    image: ghcr.io/vitaliibedletskyi/backend-starter/streamlet-backend-dev-test:latest
+    image: ghcr.io/vitaliibedletskyi/backend-starter/backend
     container_name: backend
     depends_on:
       - api-db
@@ -36,7 +36,7 @@ services:
         max-size: "10m"
         max-file: "5"
   frontend:
-    image: ghcr.io/vitaliibedletskyi/backend-starter/streamlet-frontend-dev-test:latest
+    image: ghcr.io/vitaliibedletskyi/backend-starter/frontend
     container_name: frontend
     depends_on:
       - backend
